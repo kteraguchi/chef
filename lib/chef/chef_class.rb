@@ -81,32 +81,37 @@ class Chef
 
     #
     # Dependency Injection API (Private not Public)
-    # [ in the ruby sense these have to be public methods, but they are *NOT* for public consumption ]
+    # [ in the ruby sense these have to be public methods, but they are
+    #   *NOT* for public consumption ]
     #
 
-    # Sets the resource_priority_map (internal API, not for public use)
+    # Sets the resource_priority_map
     #
+    # @api private
     # @param resource_priority_map [Chef::Platform::ResourcePriorityMap]
     def set_resource_priority_map(resource_priority_map)
       @resource_priority_map = resource_priority_map
     end
 
-    # Sets the provider_priority_map (internal API, not for public use)
+    # Sets the provider_priority_map
     #
+    # @api private
     # @param provider_priority_map [Chef::Platform::providerPriorityMap]
     def set_provider_priority_map(provider_priority_map)
       @provider_priority_map = provider_priority_map
     end
 
-    # Sets the node object (internal API, not for public use)
+    # Sets the node object
     #
+    # @api private
     # @param node [Chef::Node]
     def set_node(node)
       @node = node
     end
 
-    # Sets the run_context object (internal API, not for public use)
+    # Sets the run_context object
     #
+    # @api private
     # @param run_context [Chef::RunContext]
     def set_run_context(run_context)
       @run_context = run_context
