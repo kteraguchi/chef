@@ -47,36 +47,36 @@ class Chef
     #
     # @param resource_name [Symbol] name of the resource as a symbol
     # @return [Array<Class>] Priority Array of Provider Classes to use for the resource_name on the node
-    def get_priority_map_for_resource(resource_name)
-      @provider_priority_map.get_priority_map_for_resource(node, resource_name).dup
+    def get_provider_priority_array(resource_name)
+      @provider_priority_map.get_provider_priority_array(node, resource_name).dup
     end
 
     # Get the array of resources associated with a resource_name for the current node
     #
     # @param resource_name [Symbol] name of the resource as a symbol
     # @return [Array<Class>] Priority Array of Resource Classes to use for the resource_name on the node
-    def get_priority_map_for_provider(resource_name)
-      @resource_priority_map.get_priority_map_for_provider(node, resource_name).dup
+    def get_resource_priority_array(resource_name)
+      @resource_priority_map.get_resource_priority_array(node, resource_name).dup
     end
 
     # Set the array of providers associated with a resource_name for the current node
     #
     # @param resource_name [Symbol] name of the resource as a symbol
     # @param priority_array [Array<Class>] Array of Classes to set as the priority for resource_name on the node
-    # @param filter [Hash] Chef::NodeMap-style filter
+    # @param filter [Hash] Chef::Nodearray-style filter
     # @return [Array<Class>] Modified Priority Array of Provider Classes to use for the resource_name on the node
-    def set_priority_map_for_resource(resource_name, priority_array, *filter)
-      @provider_priority_map.set_priority_map_for_resource(resource_name, priority_array, *filter).dup
+    def set_provider_priority_array(resource_name, priority_array, *filter)
+      @provider_priority_map.set_provider_priority_array(resource_name, priority_array, *filter).dup
     end
 
     # Get the array of resources associated with a resource_name for the current node
     #
     # @param resource_name [Symbol] name of the resource as a symbol
     # @param priority_array [Array<Class>] Array of Classes to set as the priority for resource_name on the node
-    # @param filter [Hash] Chef::NodeMap-style filter
+    # @param filter [Hash] Chef::Nodearray-style filter
     # @return [Array<Class>] Modified Priority Array of Resource Classes to use for the resource_name on the node
-    def set_priority_map_for_provider(resource_name, priority_array, *filter)
-      @resource_priority_map.set_priority_map_for_provider(resource_name, priority_array, *filter).dup
+    def set_resource_priority_array(resource_name, priority_array, *filter)
+      @resource_priority_map.set_resource_priority_array(resource_name, priority_array, *filter).dup
     end
 
     #
@@ -115,6 +115,16 @@ class Chef
     # @param run_context [Chef::RunContext]
     def set_run_context(run_context)
       @run_context = run_context
+    end
+
+    # Resets the internal state
+    #
+    # @api private
+    def reset!
+      @run_context = nil
+      @node = nil
+      @provider_priority_map = nil
+      @resource_priority_map = nil
     end
   end
 end
