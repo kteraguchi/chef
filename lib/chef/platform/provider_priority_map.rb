@@ -8,11 +8,11 @@ class Chef
         load_default_map
       end
 
-      def get_priority_map_for_resource(node, resource_name)
+      def get_priority_array(node, resource_name)
         priority_map.get(node, resource_name.to_sym)
       end
 
-      def set_priority_map_for_resource(resource_name, priority_array, *filter)
+      def set_priority_array(resource_name, priority_array, *filter)
         priority(resource_name.to_sym, priority_array.to_a, *filter)
       end
 

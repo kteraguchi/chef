@@ -53,25 +53,25 @@ describe "Chef class" do
   context "priority maps" do
     context "#get_provider_priority_array" do
       it "should use the current node to get the right priority_map" do
-        expect(provider_priority_map).to receive(:get_provider_priority_array).with(node, :http_request).and_return("stuff")
+        expect(provider_priority_map).to receive(:get_priority_array).with(node, :http_request).and_return("stuff")
         expect(Chef.get_provider_priority_array(:http_request)).to eql("stuff")
       end
     end
     context "#get_resource_priority_array" do
       it "should use the current node to get the right priority_map" do
-        expect(resource_priority_map).to receive(:get_resource_priority_array).with(node, :http_request).and_return("stuff")
+        expect(resource_priority_map).to receive(:get_priority_array).with(node, :http_request).and_return("stuff")
         expect(Chef.get_resource_priority_array(:http_request)).to eql("stuff")
       end
     end
     context "#set_provider_priority_array" do
       it "should delegate to the provider_priority_map" do
-        expect(provider_priority_map).to receive(:set_provider_priority_array).with(:http_request, ["a", "b"], platform: "debian").and_return("stuff")
+        expect(provider_priority_map).to receive(:set_priority_array).with(:http_request, ["a", "b"], platform: "debian").and_return("stuff")
         expect(Chef.set_provider_priority_array(:http_request, ["a", "b"], platform: "debian")).to eql("stuff")
       end
     end
     context "#set_priority_map_for_resource" do
       it "should delegate to the resource_priority_map" do
-        expect(resource_priority_map).to receive(:set_resource_priority_array).with(:http_request, ["a", "b"], platform: "debian").and_return("stuff")
+        expect(resource_priority_map).to receive(:set_priority_array).with(:http_request, ["a", "b"], platform: "debian").and_return("stuff")
         expect(Chef.set_resource_priority_array(:http_request, ["a", "b"], platform: "debian")).to eql("stuff")
       end
     end

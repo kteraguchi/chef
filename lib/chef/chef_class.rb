@@ -48,7 +48,7 @@ class Chef
     # @param resource_name [Symbol] name of the resource as a symbol
     # @return [Array<Class>] Priority Array of Provider Classes to use for the resource_name on the node
     def get_provider_priority_array(resource_name)
-      @provider_priority_map.get_provider_priority_array(node, resource_name).dup
+      @provider_priority_map.get_priority_array(node, resource_name).dup
     end
 
     # Get the array of resources associated with a resource_name for the current node
@@ -56,7 +56,7 @@ class Chef
     # @param resource_name [Symbol] name of the resource as a symbol
     # @return [Array<Class>] Priority Array of Resource Classes to use for the resource_name on the node
     def get_resource_priority_array(resource_name)
-      @resource_priority_map.get_resource_priority_array(node, resource_name).dup
+      @resource_priority_map.get_priority_array(node, resource_name).dup
     end
 
     # Set the array of providers associated with a resource_name for the current node
@@ -66,7 +66,7 @@ class Chef
     # @param filter [Hash] Chef::Nodearray-style filter
     # @return [Array<Class>] Modified Priority Array of Provider Classes to use for the resource_name on the node
     def set_provider_priority_array(resource_name, priority_array, *filter)
-      @provider_priority_map.set_provider_priority_array(resource_name, priority_array, *filter).dup
+      @provider_priority_map.set_priority_array(resource_name, priority_array, *filter).dup
     end
 
     # Get the array of resources associated with a resource_name for the current node
@@ -76,7 +76,7 @@ class Chef
     # @param filter [Hash] Chef::Nodearray-style filter
     # @return [Array<Class>] Modified Priority Array of Resource Classes to use for the resource_name on the node
     def set_resource_priority_array(resource_name, priority_array, *filter)
-      @resource_priority_map.set_resource_priority_array(resource_name, priority_array, *filter).dup
+      @resource_priority_map.set_priority_array(resource_name, priority_array, *filter).dup
     end
 
     #
