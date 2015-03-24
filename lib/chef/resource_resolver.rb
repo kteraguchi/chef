@@ -63,7 +63,7 @@ class Chef
 
       if handlers.count >= 2
         # this magic stack ranks the resources by where they appear in the resource_priority_map
-        priority_list = [ get_priority_map_for_resource(node, resource) ].flatten.compact
+        priority_list = [ get_priority_array(node, resource) ].flatten.compact
         handlers = handlers.sort_by { |x| i = priority_list.index x; i.nil? ? Float::INFINITY : i }
         if priority_list.index(handlers.first).nil?
           # if we had more than one and we picked one with a precidence of infinity that means that the resource_priority_map
@@ -90,8 +90,8 @@ class Chef
     end
 
     # dep injection hooks
-    def get_priority_map_for_resource(node, resource_name)
-      resource_priority_map.get_priority_map_for_resource(node, resource_name)
+    def get_priority_array(node, resource_name)
+      resource_priority_map.get_priority_array(node, resource_name)
     end
 
     def resource_priority_map
